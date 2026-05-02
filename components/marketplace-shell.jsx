@@ -1,7 +1,9 @@
+'use client'
+
 import { useMemo, useState } from 'react'
-import { Link, Route, Routes, useLocation } from 'react-router-dom'
-import { products } from './data/products'
-import { useShopStore } from './store/useShopStore'
+import Link from 'next/link'
+import { products } from '../src/data/products'
+import { useShopStore } from '../src/store/useShopStore'
 
 const INR_RATE = 84
 
@@ -20,13 +22,10 @@ const sorts = [
 
 const formatPrice = (value) => currency.format(value * INR_RATE)
 
-function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<ProductListingPage />} />
-      <Route path="/checkout" element={<CheckoutPage />} />
-    </Routes>
-  )
+export default function MarketplaceShell({ page }) {
+  const isCheckoutPage = page === 'checkout'
+
+  return isCheckoutPage ? <CheckoutPage /> : <ProductListingPage />
 }
 
 function ProductListingPage() {
@@ -89,6 +88,7 @@ function ProductListingPage() {
         showWishlistOnly={showWishlistOnly}
         setShowWishlistOnly={setShowWishlistOnly}
         wishlistCount={wishlist.length}
+        isCheckoutPage={false}
       />
 
       <section className="market-strip">
@@ -225,7 +225,7 @@ function ProductListingPage() {
       </main>
 
       {cartCount > 0 ? (
-        <Link to="/checkout" className="floating-checkout-btn">
+        <Link href="/checkout" className="floating-checkout-btn">
           <span>Proceed to Checkout</span>
           <strong>
             {cartCount} items • {formatPrice(cartSubtotal)}
@@ -244,7 +244,7 @@ function CheckoutPage() {
 
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0)
   const subtotal = cart.reduce((total, item) => total + item.quantity * item.price, 0)
-  const shipping = subtotal > 0 ? 0 : 0
+  const shipping = 0
   const tax = subtotal * 0.18
   const total = subtotal + shipping + tax
 
@@ -257,6 +257,7 @@ function CheckoutPage() {
         showWishlistOnly={false}
         setShowWishlistOnly={() => {}}
         wishlistCount={wishlist.length}
+        isCheckoutPage
       />
 
       <section className="checkout-hero">
@@ -264,7 +265,7 @@ function CheckoutPage() {
           <p className="eyebrow">Checkout</p>
           <h2>Review your cart, confirm totals, and continue to payment.</h2>
         </div>
-        <Link to="/" className="back-link">
+        <Link href="/" className="back-link">
           Continue shopping
         </Link>
       </section>
@@ -282,7 +283,7 @@ function CheckoutPage() {
             <div className="empty-state">
               <h4>Your cart is empty</h4>
               <p>Add products from the listing page to see your payment summary here.</p>
-              <Link to="/" className="secondary-link">
+              <Link href="/" className="secondary-link">
                 Browse products
               </Link>
             </div>
@@ -373,13 +374,11 @@ function MarketplaceHeader({
   showWishlistOnly,
   setShowWishlistOnly,
   wishlistCount,
+  isCheckoutPage,
 }) {
-  const location = useLocation()
-  const isCheckoutPage = location.pathname === '/checkout'
-
   return (
     <header className="topbar">
-      <Link to="/" className="brand-block brand-link">
+      <Link href="/" className="brand-block brand-link">
         <span className="brand-mark">MA</span>
         <div>
           <p className="eyebrow">Marketplace</p>
@@ -404,7 +403,7 @@ function MarketplaceHeader({
           disabled={isCheckoutPage}
         />
         {isCheckoutPage ? (
-          <Link to="/" className="nav-search-link">
+          <Link href="/" className="nav-search-link">
             Browse
           </Link>
         ) : (
@@ -417,12 +416,12 @@ function MarketplaceHeader({
           <span className="nav-kicker">Settings</span>
           <strong>Preferences</strong>
         </button>
-        <button type="button" className="nav-chip">
+        <Link href="/login" className="nav-chip nav-link-chip">
           <span className="nav-kicker">Account</span>
           <strong>Orders & Login</strong>
-        </button>
+        </Link>
         {isCheckoutPage ? (
-          <Link to="/" className="nav-chip nav-link-chip">
+          <Link href="/" className="nav-chip nav-link-chip">
             <span className="nav-kicker">Wishlist</span>
             <strong>{wishlistCount} saved</strong>
           </Link>
@@ -436,7 +435,7 @@ function MarketplaceHeader({
             <strong>{showWishlistOnly ? 'Showing saved' : `${wishlistCount} saved`}</strong>
           </button>
         )}
-        <Link to="/checkout" className="nav-chip nav-cart nav-link-chip">
+        <Link href="/checkout" className="nav-chip nav-cart nav-link-chip">
           <span className="nav-kicker">Cart</span>
           <strong>{cartCount} items</strong>
         </Link>
@@ -444,5 +443,3 @@ function MarketplaceHeader({
     </header>
   )
 }
-
-export default App
