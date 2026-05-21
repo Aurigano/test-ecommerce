@@ -1,7 +1,7 @@
 import AuthShell from '../../components/auth-shell'
 
 export const metadata = {
-  title: 'Forgot Password | Market Atlas',
+  title: 'Forgot Password | Atlas Commerce',
 }
 
 export default function ForgotPasswordPage() {

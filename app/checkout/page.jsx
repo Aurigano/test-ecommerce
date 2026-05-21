@@ -1,5 +1,5 @@
-import MarketplaceShell from '../../components/marketplace-shell'
+import CommerceShell from '../../components/commerce-shell'
 
 export default function CheckoutPage() {
-  return <MarketplaceShell page="checkout" />
+  return <CommerceShell page="checkout" />
 }

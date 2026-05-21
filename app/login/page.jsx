@@ -1,7 +1,7 @@
 import AuthShell from '../../components/auth-shell'
 
 export const metadata = {
-  title: 'Login | Market Atlas',
+  title: 'Login | Atlas Commerce',
 }
 
 export default function LoginPage() {

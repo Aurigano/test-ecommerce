@@ -1,5 +1,5 @@
-import MarketplaceShell from '../components/marketplace-shell'
+import StorefrontHome from '../components/storefront/storefront-home'
 
 export default function HomePage() {
-  return <MarketplaceShell page="catalog" />
+  return <StorefrontHome />
 }

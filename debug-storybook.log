@@ -1,0 +1,16 @@
+[23:08:29.791] [INFO] storybook v10.4.0
+[23:08:30.727] [DEBUG] Getting package.json info for /Users/arindc-blrm24/Projects/practice/test-ecommerce/package.json...
+[23:08:32.271] [ERROR] [38;2;241;97;97mError: Failed to load static files, no such directory: [36m./public[39m
+Make sure this directory exists.[39m
+    at parseStaticDir (file://./node_modules/storybook/dist/_node-chunks/chunk-OQIYQ5CW.js:129:11)
+    at file://./node_modules/storybook/dist/core-server/presets/common-preset.js:1567:48
+    at Array.map (<anonymous>)
+    at Object.favicon (file://./node_modules/storybook/dist/core-server/presets/common-preset.js:1562:193)
+    at async useStatics (file://./node_modules/storybook/dist/_node-chunks/chunk-OQIYQ5CW.js:85:83)
+    at async Promise.all (index 2)
+    at async storybookDevServer (file://./node_modules/storybook/dist/core-server/index.js:18904:141)
+    at async buildOrThrow (file://./node_modules/storybook/dist/core-server/index.js:8205:12)
+    at async buildDevStandalone (file://./node_modules/storybook/dist/core-server/index.js:19478:41)
+    at async withTelemetry (file://./node_modules/storybook/dist/_node-chunks/chunk-OQIYQ5CW.js:655:12)
+[23:08:32.275] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.

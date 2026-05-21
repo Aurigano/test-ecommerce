@@ -10,10 +10,10 @@ export default function AuthShell({ mode }) {
       <div className="auth-shell">
         <section className="auth-aside">
           <Link href="/" className="brand-block brand-link auth-brand">
-            <span className="brand-mark">MA</span>
+            <span className="brand-mark">AC</span>
             <div>
-              <p className="eyebrow">Marketplace</p>
-              <h1>Market Atlas</h1>
+              <p className="eyebrow">KSA commerce</p>
+              <h1>Atlas Commerce</h1>
             </div>
           </Link>
 
@@ -24,14 +24,14 @@ export default function AuthShell({ mode }) {
                 ? 'Reset access and get back to your saved cart.'
                 : isLogin
                   ? 'Welcome back to your shopping desk.'
-                  : 'Create your Market Atlas account.'}
+                  : 'Create your Atlas Commerce account.'}
             </h2>
             <p>
               {isForgotPassword
                 ? 'We will send a recovery link to your email so you can securely update your password and continue shopping.'
                 : isLogin
                 ? 'Track orders, save favorites, and move from product discovery to checkout without losing your cart.'
-                : 'Save your wishlist, manage deliveries, and get back to your cart from any device in a few taps.'}
+                : 'Save your wishlist, manage deliveries, and get back to your cart from any device in a few steps.'}
             </p>
           </div>
 

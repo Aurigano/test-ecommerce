@@ -17,8 +17,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata = {
-  title: 'Market Atlas',
-  description: 'A marketplace-style ecommerce catalog built with Next.js 16 and Zustand.',
+  title: 'Atlas Commerce',
+  description: 'Configurable KSA commerce storefront with reusable shell, product listing components, and trust-led journeys.',
 }
 
 export default function RootLayout({ children }) {
