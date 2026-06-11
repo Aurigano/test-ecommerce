@@ -6,16 +6,16 @@ import { cva } from 'class-variance-authority'
 import { cn } from '../../lib/utils'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--storefront-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border-2 text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--storefront-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
         default:
-          'bg-[var(--storefront-brand)] text-white shadow-[0_18px_34px_-22px_var(--storefront-brand-strong)] hover:bg-[var(--storefront-brand-strong)]',
+          'border-[var(--storefront-brand)] bg-[var(--storefront-brand)] text-white shadow-sm hover:border-[var(--storefront-brand-strong)] hover:bg-[var(--storefront-brand-strong)]',
         outline:
-          'border border-[var(--storefront-line)] bg-[var(--storefront-panel-strong)] text-[var(--storefront-ink)] hover:border-[var(--storefront-brand)] hover:text-[var(--storefront-brand-strong)]',
+          'border-[var(--storefront-line)] bg-white text-[var(--storefront-ink)] hover:border-[var(--storefront-brand)] hover:text-[var(--storefront-brand-strong)]',
         ghost:
-          'bg-transparent text-[var(--storefront-muted)] hover:bg-[var(--storefront-chip)] hover:text-[var(--storefront-ink)]',
+          'border-transparent bg-transparent text-[var(--storefront-muted)] hover:bg-[var(--storefront-chip)] hover:text-[var(--storefront-ink)]',
       },
       size: {
         default: 'h-11 px-5',

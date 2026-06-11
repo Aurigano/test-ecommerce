@@ -4,7 +4,7 @@ function Card({ className, ...props }) {
   return (
     <div
       className={cn(
-        'rounded-[32px] border border-[var(--storefront-line)] bg-[var(--storefront-panel)] text-[var(--storefront-ink)] shadow-[0_24px_80px_-48px_rgba(15,23,42,0.3)] backdrop-blur-sm',
+        'rounded-lg border-2 border-[var(--storefront-line)] bg-[var(--storefront-panel)] text-[var(--storefront-ink)] shadow-lg',
         className,
       )}
       {...props}
@@ -20,7 +20,7 @@ function CardTitle({ className, ...props }) {
   return (
     <h3
       className={cn(
-        'font-[family-name:var(--font-space-grotesk)] text-xl font-semibold tracking-tight text-[var(--storefront-ink)]',
+        'text-xl font-bold tracking-tight text-[var(--storefront-ink)]',
         className,
       )}
       {...props}

@@ -21,7 +21,7 @@ export const Default = {
 
     return (
       <div
-        style={getStorefrontThemeVars(storefrontThemes.atlas)}
+        style={getStorefrontThemeVars(storefrontThemes.classic)}
         className="w-[320px] bg-[var(--storefront-backdrop)] p-4"
       >
         <ProductCard

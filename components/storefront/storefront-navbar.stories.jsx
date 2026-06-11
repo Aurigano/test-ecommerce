@@ -10,7 +10,7 @@ export default {
 
 export const Default = {
   render: () => {
-    const [themeId, setThemeId] = useState('atlas')
+    const [themeId, setThemeId] = useState('classic')
     const themeOptions = Object.values(storefrontThemes)
     const currentTheme = storefrontThemes[themeId]
 

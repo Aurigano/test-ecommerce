@@ -15,18 +15,18 @@ export function StorefrontNavbar({
   onThemeChange,
 }) {
   return (
-    <header className="rounded-[32px] border border-[var(--storefront-line)] bg-[var(--storefront-panel)] p-4 shadow-[0_24px_80px_-48px_rgba(15,23,42,0.28)] backdrop-blur-md">
+    <header className="rounded-lg border-2 border-[var(--storefront-line)] bg-[var(--storefront-panel)] p-5 shadow-lg">
       <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
         <div className="flex items-center gap-4">
-          <div className="grid size-14 place-items-center rounded-[20px] bg-[var(--storefront-brand)] font-[family-name:var(--font-space-grotesk)] text-lg font-bold text-white">
+          <div className="grid h-10 w-28 place-items-center rounded-lg bg-[var(--storefront-brand)] text-sm font-bold uppercase tracking-[0.12em] text-white">
             AC
           </div>
           <div className="space-y-1">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[var(--storefront-muted)]">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--storefront-muted)]">
               {eyebrow}
             </p>
             <div className="flex items-center gap-3">
-              <h1 className="font-[family-name:var(--font-space-grotesk)] text-2xl font-semibold tracking-tight">
+              <h1 className="text-2xl font-bold tracking-tight text-gray-800">
                 {brandName}
               </h1>
               <Badge>{currentThemeLabel}</Badge>

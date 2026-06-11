@@ -6,7 +6,7 @@ export default {
   title: 'Storefront/Experience',
   component: StorefrontExperience,
   args: {
-    initialThemeId: 'atlas',
+    initialThemeId: 'classic',
   },
 }
 

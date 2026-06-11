@@ -12,7 +12,7 @@ export function ProductToolbar({ query, onQueryChange, sortBy, onSortChange }) {
       <div className="max-w-2xl space-y-2">
         <Badge variant="outline">Product listing</Badge>
         <div className="space-y-2">
-          <h2 className="font-[family-name:var(--font-space-grotesk)] text-3xl font-semibold tracking-tight md:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-800 md:text-4xl">
             Browse a conversion-focused catalog with local trust cues built in.
           </h2>
           <p className="max-w-2xl text-sm leading-6 text-[var(--storefront-muted)] md:text-base">
@@ -38,7 +38,7 @@ export function ProductToolbar({ query, onQueryChange, sortBy, onSortChange }) {
           <option value="price-high">Price: High to Low</option>
           <option value="rating">Top Rated</option>
         </Select>
-        <Button variant="ghost" size="sm" className="h-11 rounded-full px-4">
+        <Button variant="ghost" size="sm" className="h-11 rounded-lg px-4">
           <SlidersHorizontal className="size-4" />
           Filters
         </Button>
