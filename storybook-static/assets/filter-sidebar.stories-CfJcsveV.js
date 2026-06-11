@@ -1,0 +1,11 @@
+import{j as e}from"./jsx-runtime-Cr8k9s_V.js";import{S as l}from"./storybook-shell-C0Cs_H82.js";import{C as n,d,e as c,b as m,a as p}from"./card-0OH4BKLt.js";import{B as i}from"./badge-DQ5ziIsP.js";import"./iframe-BI_-7ZT5.js";import"./preload-helper-PPVm8Dsz.js";import"./storefront-theme-DlliHzJ8.js";import"./utils-DclmTqRz.js";import"./index-BYWyDHmV.js";function s({sections:o=[{title:"Price",options:["Under INR 2,500","INR 2,500 - 7,500","Above INR 7,500"]},{title:"Delivery",options:["Same day","Tomorrow","Within 3 days"]},{title:"Offers",options:["Tabby available","Tamara available","Free delivery"]}]}){return e.jsxs(n,{className:"rounded-lg bg-[var(--storefront-panel-strong)]",children:[e.jsxs(d,{className:"space-y-3",children:[e.jsx(i,{variant:"outline",children:"Sidebar filters"}),e.jsxs("div",{className:"space-y-1",children:[e.jsx(c,{children:"Refine the catalog"}),e.jsx(m,{children:"Designed as a configurable rail for desktop-heavy product discovery."})]})]}),e.jsx(p,{className:"space-y-5",children:o.map(a=>e.jsxs("div",{className:"space-y-3 border-t-2 border-[var(--storefront-line)] pt-5 first:border-t-0 first:pt-0",children:[e.jsx("h3",{className:"text-base font-bold text-gray-700",children:a.title}),e.jsx("div",{className:"flex flex-wrap gap-2",children:a.options.map(t=>e.jsx(i,{children:t},t))})]},a.title))})]})}s.__docgenInfo={description:"",methods:[],displayName:"FilterSidebar",props:{sections:{defaultValue:{value:`[
+  { title: 'Price', options: ['Under INR 2,500', 'INR 2,500 - 7,500', 'Above INR 7,500'] },
+  { title: 'Delivery', options: ['Same day', 'Tomorrow', 'Within 3 days'] },
+  { title: 'Offers', options: ['Tabby available', 'Tamara available', 'Free delivery'] },
+]`,computed:!1},required:!1}}};const j={title:"Storefront/Filter Sidebar",component:s},r={render:()=>e.jsx(l,{className:"min-h-0",children:e.jsx("div",{className:"max-w-sm",children:e.jsx(s,{})})})};r.parameters={...r.parameters,docs:{...r.parameters?.docs,source:{originalSource:`{
+  render: () => <StorybookStorefrontShell className="min-h-0">
+      <div className="max-w-sm">
+        <FilterSidebar />
+      </div>
+    </StorybookStorefrontShell>
+}`,...r.parameters?.docs?.source}}};const g=["Default"];export{r as Default,g as __namedExportsOrder,j as default};
