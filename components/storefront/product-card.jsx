@@ -1,31 +1,37 @@
 'use client'
 
+import Link from 'next/link'
 import { Heart, ShoppingCart, Star, Truck } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import { Button } from '../ui/button'
 import { Card, CardContent, CardFooter } from '../ui/card'
 
-const currency = new Intl.NumberFormat('en-IN', {
-  style: 'currency',
-  currency: 'INR',
-  maximumFractionDigits: 0,
-})
-
-const INR_RATE = 84
-
-function formatPrice(value) {
-  return currency.format(value * INR_RATE)
+function formatPrice(value, currencyCode = 'SAR') {
+  return new Intl.NumberFormat(currencyCode === 'USD' ? 'en-US' : 'en-SA', {
+    style: 'currency',
+    currency: currencyCode,
+    maximumFractionDigits: 2,
+  }).format(value)
 }
 
-export function ProductCard({ product, inWishlist, cartQuantity, onToggleWishlist, onAddToCart }) {
+export function ProductCard({
+  product,
+  inWishlist,
+  cartQuantity,
+  onToggleWishlist,
+  onAddToCart,
+  currency = 'SAR',
+}) {
   return (
     <Card className="group overflow-hidden rounded-lg">
       <div className="relative overflow-hidden border-b-2 border-[var(--storefront-line)] bg-[var(--storefront-panel-strong)]">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-        />
+        <Link href={`/product/${product.slug ?? product.id}`}>
+          <img
+            src={product.image}
+            alt={product.title}
+            className="aspect-[4/5] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+          />
+        </Link>
         <div className="absolute left-3 top-3">
           <span className="inline-flex rounded bg-[var(--storefront-danger)] px-2 py-1 text-[11px] font-bold text-white">
             SALE
@@ -60,9 +66,11 @@ export function ProductCard({ product, inWishlist, cartQuantity, onToggleWishlis
             </span>
           </div>
           <div className="space-y-1">
-            <h3 className="text-base font-semibold leading-tight text-gray-800">
-              {product.title}
-            </h3>
+            <Link href={`/product/${product.slug ?? product.id}`}>
+              <h3 className="text-base font-semibold leading-tight text-gray-800">
+                {product.title}
+              </h3>
+            </Link>
             <p className="line-clamp-2 text-sm leading-6 text-[var(--storefront-muted)]">{product.description}</p>
           </div>
         </div>
@@ -70,10 +78,10 @@ export function ProductCard({ product, inWishlist, cartQuantity, onToggleWishlis
         <div className="flex items-end justify-between gap-3">
           <div className="space-y-1">
             <div className="flex items-end gap-2">
-              <strong className="text-xl font-bold text-gray-900">{formatPrice(product.price)}</strong>
-              <span className="text-sm text-[var(--storefront-muted)] line-through">{formatPrice(product.mrp)}</span>
+              <strong className="text-xl font-bold text-gray-900">{formatPrice(product.price, currency)}</strong>
+              <span className="text-sm text-[var(--storefront-muted)] line-through">{formatPrice(product.mrp, currency)}</span>
             </div>
-            <p className="text-xs font-medium text-[var(--storefront-muted)]">Tabby from {formatPrice(product.price / 4)}</p>
+            <p className="text-xs font-medium text-[var(--storefront-muted)]">Tabby from {formatPrice(product.price / 4, currency)}</p>
           </div>
           <Badge variant="outline">{product.stock}</Badge>
         </div>

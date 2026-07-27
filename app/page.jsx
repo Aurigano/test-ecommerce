@@ -1,5 +1,6 @@
-import StorefrontHome from '../components/storefront/storefront-home'
+import { StorefrontRoutePage } from '../components/storefront/storefront-route-page'
 
 export default function HomePage() {
-  return <StorefrontHome />
+  return <StorefrontRoutePage templateId="homepage_default" />
 }
+

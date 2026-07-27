@@ -1,5 +1,6 @@
-import CommerceShell from '../../components/commerce-shell'
+import { StorefrontRoutePage } from '../../components/storefront/storefront-route-page'
 
 export default function CheckoutPage() {
-  return <CommerceShell page="checkout" />
+  return <StorefrontRoutePage templateId="checkout_gateway" />
 }
+
