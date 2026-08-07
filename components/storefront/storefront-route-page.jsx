@@ -20,6 +20,7 @@ import {
   Sparkles,
   Star,
   Truck,
+  UserRound,
 } from 'lucide-react'
 import { ProductCard } from './product-card'
 import { StorefrontLayoutManager } from './layout-manager'
@@ -340,6 +341,8 @@ export function StorefrontRoutePage({ templateId, routeParams = {}, routeSearchP
             <div className="store-search-shell">
               <Search className="size-4 text-slate-400" />
               <input
+                autoFocus
+                aria-label="Search products, categories, and help articles"
                 value={store.searchQuery}
                 onChange={(event) => {
                   store.setSearchQuery(event.target.value)
@@ -355,10 +358,24 @@ export function StorefrontRoutePage({ templateId, routeParams = {}, routeSearchP
               </Button>
             </div>
             <nav className="store-action-nav">
-              <MerchantLink href="/account" className="store-action-link">Account</MerchantLink>
-              <MerchantLink href="/account/wishlist" className="store-action-link">Wishlist {store.wishlist.length ? `(${store.wishlist.length})` : ''}</MerchantLink>
-              <button type="button" className="store-action-link" onClick={() => store.toggleOverlay('miniCart')}>
-                Cart ({store.cart.reduce((sum, item) => sum + item.quantity, 0)})
+              <MerchantLink href="/account" className="store-action-icon" aria-label="Account" title="Account">
+                <UserRound className="size-5" />
+              </MerchantLink>
+              <MerchantLink href="/account/wishlist" className="store-action-icon" aria-label={`Wishlist with ${store.wishlist.length} items`} title="Wishlist">
+                <Heart className="size-5" />
+                {store.wishlist.length > 0 ? <span className="store-action-count">{store.wishlist.length}</span> : null}
+              </MerchantLink>
+              <button
+                type="button"
+                className="store-action-icon"
+                aria-label={`Cart with ${store.cart.reduce((sum, item) => sum + item.quantity, 0)} items`}
+                title="Cart"
+                onClick={() => store.toggleOverlay('miniCart')}
+              >
+                <ShoppingCart className="size-5" />
+                {store.cart.length > 0 ? (
+                  <span className="store-action-count">{store.cart.reduce((sum, item) => sum + item.quantity, 0)}</span>
+                ) : null}
               </button>
             </nav>
           </header>
@@ -1271,6 +1288,21 @@ export function StorefrontRoutePage({ templateId, routeParams = {}, routeSearchP
   const renderRegion = (regionName) =>
     template.grid_layout[regionName].map((factoryKey, index) => renderBlock(factoryKey, index))
 
+  const renderHeaderRegion = () => {
+    const headerBlocks = template.grid_layout.header
+    const announcementBlocks = headerBlocks.filter((factoryKey) => factoryKey === 'AnnouncementBar')
+    const navigationBlocks = headerBlocks.filter((factoryKey) => factoryKey !== 'AnnouncementBar')
+
+    return [
+      ...announcementBlocks.map((factoryKey, index) => renderBlock(factoryKey, index)),
+      navigationBlocks.length > 0 ? (
+        <div key="sticky-storefront-navigation" className="storefront-sticky-header">
+          {navigationBlocks.map((factoryKey, index) => renderBlock(factoryKey, index))}
+        </div>
+      ) : null,
+    ].filter(Boolean)
+  }
+
   const overlayNodes = (
     <>
       {store.overlays.search && store.searchQuery ? (
@@ -1397,7 +1429,7 @@ export function StorefrontRoutePage({ templateId, routeParams = {}, routeSearchP
         routeTemplateId={template.route_template_id}
         direction={store.direction || template.direction}
         merchantConfig={merchantConfig}
-        header={renderRegion('header')}
+        header={renderHeaderRegion()}
         leftContent={renderRegion('left_content')}
         mainContent={renderRegion('main_content')}
         rightContent={renderRegion('right_content')}

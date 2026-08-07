@@ -40,8 +40,6 @@ function Region({ children, className }) {
 
 export function StorefrontLayoutManager({
   direction = 'ltr',
-  routeTemplateId,
-  merchantConfig,
   header,
   leftContent,
   mainContent,
@@ -67,12 +65,6 @@ export function StorefrontLayoutManager({
     <div dir={direction} className="storefront-runtime">
       <div className="storefront-chrome">
         <div className="storefront-container">
-          <div className="storefront-template-meta">
-            <span>{merchantConfig.brandName}</span>
-            <span>{routeTemplateId}</span>
-            <span>{direction.toUpperCase()}</span>
-          </div>
-
           <Region className="storefront-header-region">{header}</Region>
 
           <section className="storefront-middle-region" style={{ gridTemplateColumns: middleTemplate }}>
